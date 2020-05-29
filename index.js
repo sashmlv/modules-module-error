@@ -12,6 +12,7 @@ class ModuleError extends Error {
     * @param {string} params.message
     * @param {string} params.code
     * @param {number} params.status
+    * @param {*} params.data
     **/
    constructor( params ) {
 
@@ -22,12 +23,14 @@ class ModuleError extends Error {
          message,
          code,
          status,
+         data,
       } = params;
 
       this.name = name || 'ModuleError';
       this.message = message || 'An error occurred';
       this.code = code || 'ERROR';
       this.status = status || 500;
+      this.data = data;
       this.stack = ( new Error()).stack;
    };
 };
