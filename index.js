@@ -31,7 +31,15 @@ class ModuleError extends Error {
       this.code = code || 'ERROR';
       this.status = status || 500;
       this.data = data;
-      this.stack = ( new Error()).stack;
+
+      if( Error.captureStackTrace ) {
+
+         Error.captureStackTrace( this, this.constructor );
+      }
+      else {
+
+         this.stack = ( new Error()).stack;
+      };
    };
 };
 
