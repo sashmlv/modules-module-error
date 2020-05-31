@@ -35,4 +35,7 @@ class ModuleError extends Error {
    };
 };
 
-module.exports = ModuleError;
+module.exports = {
+
+   ModuleError,
+};
