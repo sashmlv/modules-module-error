@@ -12,6 +12,7 @@ class ModuleError extends Error {
     * @param {string} params.message
     * @param {string} params.code
     * @param {number} params.status
+    * @param {string} params.level
     * @param {*} params.data
     **/
    constructor( params ) {
@@ -23,6 +24,7 @@ class ModuleError extends Error {
          message,
          code,
          status,
+         level,
          data,
       } = params;
 
@@ -30,6 +32,7 @@ class ModuleError extends Error {
       this.message = message || 'An error occurred';
       this.code = code || 'ERROR';
       this.status = status || 500;
+      this.level = [ 'trace', 'debug', 'info', 'warn', 'error', 'fatal', ].includes( level ) ? level : 'error';
       this.data = data;
 
       if( Error.captureStackTrace ) {
