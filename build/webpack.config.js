@@ -7,6 +7,16 @@ const Webpack = require( 'webpack' ),
 module.exports = {
 
    target: 'node',
+   mode: 'production',
+   node: {
+
+      __dirname: false,
+      __filename: false,
+   },
+   optimization: {
+
+      nodeEnv: false,
+   },
    stats: {
 
       all: false,
@@ -16,11 +26,9 @@ module.exports = {
       warnings: true,
       builtAt: true,
    },
-
-   mode: 'production',
    entry: {
 
-      index: './index',
+      server: './app/server.js',
    },
    output: {
 
@@ -31,5 +39,5 @@ module.exports = {
    plugins: [
 
       new Webpack.ProgressPlugin(),
-   ].filter( v => v )
+   ],
 };
