@@ -21,7 +21,10 @@ module.exports = {
 
       path: DIST,
       filename: '[name].js',
+      library: 'moduleError',
+      libraryExport: '',
       libraryTarget: 'umd',
+      globalObject: 'this',
    },
    plugins: [
 
