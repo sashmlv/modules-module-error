@@ -1,30 +1,17 @@
 'use strict';
 
 const Webpack = require( 'webpack' ),
+   { CleanWebpackPlugin } = require( 'clean-webpack-plugin' ),
    path = require( 'path' ),
-   DIST = path.resolve( `${ __dirname }/../dist` );
+   DIST = path.resolve( `${ __dirname }/../dist` ),
+   NODE_ENV = process.env.NODE_ENV || 'production';
 
 module.exports = {
 
-   target: 'node',
-   mode: 'production',
-   node: {
-
-      __dirname: false,
-      __filename: false,
-   },
+   mode: NODE_ENV,
    optimization: {
 
       nodeEnv: false,
-   },
-   stats: {
-
-      all: false,
-      colors: true,
-      errors: true,
-      errorDetails: true,
-      warnings: true,
-      builtAt: true,
    },
    entry: {
 
@@ -38,6 +25,7 @@ module.exports = {
    },
    plugins: [
 
+      new CleanWebpackPlugin(),
       new Webpack.ProgressPlugin(),
    ],
 };
